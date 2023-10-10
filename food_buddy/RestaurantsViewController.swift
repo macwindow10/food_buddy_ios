@@ -83,12 +83,25 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableRestaurants.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath);
+        let cell = tableRestaurants.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RestaurantTableViewCell;
         print(indexPath.row)
         if (indexPath.row < 0 || indexPath.row >= self.restaurants.count) {
             return cell
         }
-        cell.textLabel?.text = self.restaurants[indexPath.row].name;
+        cell.name?.text = self.restaurants[indexPath.row].name;
         return cell;
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row == 0 {
+              return 80
+        }
+
+
+       // Use the default size for all other rows.
+       //return UITableView.automaticDimension
+        return 80
+    }
+    
 }

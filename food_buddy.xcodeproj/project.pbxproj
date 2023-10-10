@@ -16,6 +16,7 @@
 		046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */; };
 		046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F92AD5934900FB4DA2 /* RestaurantModel.swift */; };
 		046043FC2AD5967600FB4DA2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043FB2AD5967600FB4DA2 /* Common.swift */; };
+		046043FE2AD59A3200FB4DA2 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043FD2AD59A3200FB4DA2 /* RestaurantTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
 		046043F92AD5934900FB4DA2 /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		046043FB2AD5967600FB4DA2 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		046043FD2AD59A3200FB4DA2 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				046043E92AD57A6200FB4DA2 /* Main.storyboard */,
 				046043F92AD5934900FB4DA2 /* RestaurantModel.swift */,
 				046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */,
+				046043FD2AD59A3200FB4DA2 /* RestaurantTableViewCell.swift */,
 				046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */,
 				046043E72AD57A6200FB4DA2 /* ViewController.swift */,
 			);
@@ -152,6 +155,7 @@
 				046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */,
 				046043E62AD57A6200FB4DA2 /* SceneDelegate.swift in Sources */,
 				046043FC2AD5967600FB4DA2 /* Common.swift in Sources */,
+				046043FE2AD59A3200FB4DA2 /* RestaurantTableViewCell.swift in Sources */,
 				046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
