@@ -16,9 +16,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         sleep(3)
-        
-        buttonOrderFood.titleLabel?.font =  UIFont(name: "Helvetica", size: 32)
-        buttonManageRestaurant.titleLabel?.font =  UIFont(name: "Helvetica", size: 32)
+    
+    }
+    
+    @IBAction func buttonClick_OrderFood(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    @IBAction func buttonClick_ManageFood(_ sender: UIButton) {
     }
 }
 

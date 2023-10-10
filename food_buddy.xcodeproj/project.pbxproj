@@ -13,6 +13,7 @@
 		046043EB2AD57A6200FB4DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046043E92AD57A6200FB4DA2 /* Main.storyboard */; };
 		046043ED2AD57A6300FB4DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046043EC2AD57A6300FB4DA2 /* Assets.xcassets */; };
 		046043F02AD57A6300FB4DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046043EE2AD57A6300FB4DA2 /* LaunchScreen.storyboard */; };
+		046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		046043EC2AD57A6300FB4DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		046043EF2AD57A6300FB4DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		046043F12AD57A6300FB4DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				046043E32AD57A6200FB4DA2 /* AppDelegate.swift */,
+				046043EC2AD57A6300FB4DA2 /* Assets.xcassets */,
+				046043F12AD57A6300FB4DA2 /* Info.plist */,
+				046043EE2AD57A6300FB4DA2 /* LaunchScreen.storyboard */,
+				046043E92AD57A6200FB4DA2 /* Main.storyboard */,
+				046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */,
 				046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */,
 				046043E72AD57A6200FB4DA2 /* ViewController.swift */,
-				046043E92AD57A6200FB4DA2 /* Main.storyboard */,
-				046043EC2AD57A6300FB4DA2 /* Assets.xcassets */,
-				046043EE2AD57A6300FB4DA2 /* LaunchScreen.storyboard */,
-				046043F12AD57A6300FB4DA2 /* Info.plist */,
 			);
 			path = food_buddy;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				046043E82AD57A6200FB4DA2 /* ViewController.swift in Sources */,
+				046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */,
 				046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */,
 				046043E62AD57A6200FB4DA2 /* SceneDelegate.swift in Sources */,
 			);
