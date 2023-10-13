@@ -54,7 +54,8 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         let request = URLRequest(url: components.url!)
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print(response!)
+            
+            //print(response!)
             do {
                 self.restaurants = []
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
@@ -122,6 +123,15 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
               return 150
         }
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("selected cell \(indexPath.row)")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenu") as! MenuViewController
+        vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

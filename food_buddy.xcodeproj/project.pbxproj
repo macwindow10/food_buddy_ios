@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		045339632AD9B71700DFEA40 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045339612AD9B71700DFEA40 /* RestaurantTableViewCell.swift */; };
 		045339642AD9B71700DFEA40 /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045339622AD9B71700DFEA40 /* RestaurantTableViewCell.xib */; };
+		045339662AD9C67700DFEA40 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045339652AD9C67700DFEA40 /* MenuViewController.swift */; };
+		045339692AD9C7A600DFEA40 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045339672AD9C7A600DFEA40 /* MenuTableViewCell.swift */; };
+		0453396A2AD9C7A600DFEA40 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */; };
+		0453396C2AD9C82900DFEA40 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453396B2AD9C82900DFEA40 /* MenuModel.swift */; };
 		046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043E32AD57A6200FB4DA2 /* AppDelegate.swift */; };
 		046043E62AD57A6200FB4DA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */; };
 		046043E82AD57A6200FB4DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043E72AD57A6200FB4DA2 /* ViewController.swift */; };
@@ -23,6 +27,10 @@
 /* Begin PBXFileReference section */
 		045339612AD9B71700DFEA40 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		045339622AD9B71700DFEA40 /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
+		045339652AD9C67700DFEA40 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		045339672AD9C7A600DFEA40 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		0453396B2AD9C82900DFEA40 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		046043E02AD57A6200FB4DA2 /* food_buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = food_buddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046043E32AD57A6200FB4DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +80,10 @@
 				046043F12AD57A6300FB4DA2 /* Info.plist */,
 				046043EE2AD57A6300FB4DA2 /* LaunchScreen.storyboard */,
 				046043E92AD57A6200FB4DA2 /* Main.storyboard */,
+				0453396B2AD9C82900DFEA40 /* MenuModel.swift */,
+				045339672AD9C7A600DFEA40 /* MenuTableViewCell.swift */,
+				045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */,
+				045339652AD9C67700DFEA40 /* MenuViewController.swift */,
 				046043F92AD5934900FB4DA2 /* RestaurantModel.swift */,
 				046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */,
 				045339612AD9B71700DFEA40 /* RestaurantTableViewCell.swift */,
@@ -143,6 +155,7 @@
 				045339642AD9B71700DFEA40 /* RestaurantTableViewCell.xib in Resources */,
 				046043F02AD57A6300FB4DA2 /* LaunchScreen.storyboard in Resources */,
 				046043ED2AD57A6300FB4DA2 /* Assets.xcassets in Resources */,
+				0453396A2AD9C7A600DFEA40 /* MenuTableViewCell.xib in Resources */,
 				046043EB2AD57A6200FB4DA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,11 +169,14 @@
 			files = (
 				046043E82AD57A6200FB4DA2 /* ViewController.swift in Sources */,
 				046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */,
+				0453396C2AD9C82900DFEA40 /* MenuModel.swift in Sources */,
 				046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */,
 				046043E62AD57A6200FB4DA2 /* SceneDelegate.swift in Sources */,
 				046043FC2AD5967600FB4DA2 /* Common.swift in Sources */,
+				045339692AD9C7A600DFEA40 /* MenuTableViewCell.swift in Sources */,
 				045339632AD9B71700DFEA40 /* RestaurantTableViewCell.swift in Sources */,
 				046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */,
+				045339662AD9C67700DFEA40 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
