@@ -12,34 +12,36 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet var tableRestaurants: UITableView!
     
-    var restaurants: [Restaurant] = []
+    var restaurants: [RestaurantModel] = []
     
     override func viewDidLoad() {
         // self.navigationItem.title = "Your Title"
         // self.title = "Restaurants"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBack))
         
-        tableRestaurants.register(UITableViewCell.self,
-                               forCellReuseIdentifier: "TableViewCell")
+        let cell = UINib(nibName: "RestaurantTableViewCell", bundle: nil)
+        self.tableRestaurants.register(cell, forCellReuseIdentifier: "cell")
         
-        // populateRestaurants()
-        var rest: Restaurant = Restaurant()
-        rest.id = 1
-        rest.name = "Salt n Pepper"
-        rest.address = "Liberty"
-        rest.image_filename = "salt_n_pepper.jpg"
-        self.restaurants.append(rest)
-        
-        rest = Restaurant()
-        rest.id = 2
-        rest.name = "Haveli"
-        rest.address = "Opposite Badshahi Mosque"
-        rest.image_filename = "haveli.jpg"
-        self.restaurants.append(rest)
-        
-        self.tableRestaurants.dataSource = self;
-        self.tableRestaurants.delegate = self;
-        self.tableRestaurants.reloadData()
+        populateRestaurants()
+        /*
+            var rest: Restaurant = Restaurant()
+            rest.id = 1
+            rest.name = "Salt n Pepper"
+            rest.address = "Liberty"
+            rest.image_filename = "salt_n_pepper.jpg"
+            self.restaurants.append(rest)
+            
+            rest = Restaurant()
+            rest.id = 2
+            rest.name = "Haveli"
+            rest.address = "Opposite Badshahi Mosque"
+            rest.image_filename = "haveli.jpg"
+            self.restaurants.append(rest)
+            
+            self.tableRestaurants.dataSource = self;
+            self.tableRestaurants.delegate = self;
+            self.tableRestaurants.reloadData()
+            */
     }
     
     func populateRestaurants() {
@@ -55,17 +57,30 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
             print(response!)
             do {
                 self.restaurants = []
-                let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
-                print(json)
-                for i in 0..<json.count {
-                    let item = json[i] as! Dictionary<String, Any>
-                    // self.restaurants.append(item["name"] as! String)
+                let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
+                //print(json)
+                if (json.count == 3 && (json["status"] as! String) == "true")
+                {
+                    let restaurants = json["restaurants"] as! NSArray
+                    for i in 0..<restaurants.count {
+                        let item = restaurants[i] as! Dictionary<String, String>
+                        let restaurant = RestaurantModel()
+                        restaurant.id = item["id"] ?? "0"
+                        restaurant.name = item["name"] ?? ""
+                        restaurant.address = item["address"] ?? ""
+                        restaurant.address = restaurant.address + ", " + item["city"]!
+                        restaurant.cuisine = item["restaurant_type"] ?? ""
+                        restaurant.image_filename = item["image_filename"] ?? ""
+                        
+                        self.restaurants.append(restaurant)
+                    }
+                    DispatchQueue.main.async {
+                        self.tableRestaurants.dataSource = self;
+                        self.tableRestaurants.delegate = self;
+                        self.tableRestaurants.reloadData()
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.tableRestaurants.dataSource = self;
-                    self.tableRestaurants.delegate = self;
-                    self.tableRestaurants.reloadData()
-                }
+                
             } catch {
                 print("error")
             }
@@ -88,20 +103,25 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         if (indexPath.row < 0 || indexPath.row >= self.restaurants.count) {
             return cell
         }
-        cell.name?.text = self.restaurants[indexPath.row].name;
+        cell.labelName?.text = self.restaurants[indexPath.row].name;
+        cell.labelCuisine?.text = "Cuisine: \(self.restaurants[indexPath.row].cuisine)"
+        cell.labelLocation?.text = self.restaurants[indexPath.row].address;
+        var img = UIImage(named: self.restaurants[indexPath.row].image_filename)
+        if (img == nil) {
+            cell.imagePicture.image = UIImage(named: "restaurant1")
+        } else {
+            cell.imagePicture.image = img
+        }
+        
         return cell;
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-              return 80
+              return 150
         }
-
-
-       // Use the default size for all other rows.
-       //return UITableView.automaticDimension
-        return 80
+        return 150
     }
     
 }

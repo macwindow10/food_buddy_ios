@@ -6,5 +6,5 @@
 //
 
 class Common {
-     static var BaseURL: String = "127.0.0.1/"
+     static var BaseURL: String = "http://127.0.0.1/"
 }
