@@ -71,7 +71,7 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func onBack() {
-        _ = navigationController?.popToRootViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,7 +88,7 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
         cell.labelName?.text = self.menus[indexPath.row].name
         let img = UIImage(named: self.menus[indexPath.row].image_filename)
         if (img == nil) {
-            cell.imagePicture.image = UIImage(named: "restaurant1")
+            cell.imagePicture.image = UIImage(named: "menu1")
         } else {
             cell.imagePicture.image = img
         }
