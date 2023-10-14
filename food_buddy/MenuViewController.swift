@@ -103,4 +103,13 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
         }
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("selected cell \(indexPath.row)")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenuDetail") as! MenuDetailViewController
+        vc.menu_id = "\(self.menus[indexPath.row].id)"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

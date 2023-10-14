@@ -22,6 +22,7 @@
 		046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */; };
 		046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F92AD5934900FB4DA2 /* RestaurantModel.swift */; };
 		046043FC2AD5967600FB4DA2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043FB2AD5967600FB4DA2 /* Common.swift */; };
+		04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
 		046043F92AD5934900FB4DA2 /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		046043FB2AD5967600FB4DA2 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				046043F12AD57A6300FB4DA2 /* Info.plist */,
 				046043EE2AD57A6300FB4DA2 /* LaunchScreen.storyboard */,
 				046043E92AD57A6200FB4DA2 /* Main.storyboard */,
+				04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */,
 				0453396B2AD9C82900DFEA40 /* MenuModel.swift */,
 				045339672AD9C7A600DFEA40 /* MenuTableViewCell.swift */,
 				045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */,
@@ -172,6 +175,7 @@
 				0453396C2AD9C82900DFEA40 /* MenuModel.swift in Sources */,
 				046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */,
 				046043E62AD57A6200FB4DA2 /* SceneDelegate.swift in Sources */,
+				04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */,
 				046043FC2AD5967600FB4DA2 /* Common.swift in Sources */,
 				045339692AD9C7A600DFEA40 /* MenuTableViewCell.swift in Sources */,
 				045339632AD9B71700DFEA40 /* RestaurantTableViewCell.swift in Sources */,
