@@ -109,7 +109,12 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
         print("selected cell \(indexPath.row)")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenuDetail") as! MenuDetailViewController
-        vc.menu_id = "\(self.menus[indexPath.row].id)"
+        vc.menu.id = self.menus[indexPath.row].id
+        vc.menu.name = self.menus[indexPath.row].name
+        vc.menu.description = self.menus[indexPath.row].description
+        vc.menu.preparation_time = self.menus[indexPath.row].preparation_time
+        vc.menu.price = self.menus[indexPath.row].price
+        vc.menu.image_filename = self.menus[indexPath.row].image_filename
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
