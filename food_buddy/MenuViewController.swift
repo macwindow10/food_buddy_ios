@@ -115,6 +115,7 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
         vc.menu.preparation_time = self.menus[indexPath.row].preparation_time
         vc.menu.price = self.menus[indexPath.row].price
         vc.menu.image_filename = self.menus[indexPath.row].image_filename
+        tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

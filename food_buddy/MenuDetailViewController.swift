@@ -21,6 +21,7 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
     var portionSizeOptions: [String] = ["Full", "Half"]
     var menu: MenuModel = MenuModel()
     var ingredients: [IngredientModel] = []
+    var selectedPortionSize = "Full"
     
     override func viewDidLoad() {
         
@@ -61,10 +62,22 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
-            
+            selectedPortionSize = "Full"
         } else if row == 1 {
-            
+            selectedPortionSize = "Half"
         }
+    }
+    
+    @IBAction func buttonPlaceOrder_Click(_ sender: UIButton) {
+        
+        placeOrder()
+        let alert = UIAlertController(title: "Information", message: "Order placed successfully", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+          
+            self.navigationController?.popViewController(animated: true)
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func populateIngredients() {
@@ -96,6 +109,38 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
                         
                         self.ingredients.append(ingredient)
                     }
+                }
+            } catch {
+                print("error")
+            }
+        });
+        task.resume();
+        sem.wait()
+    }
+    
+    func placeOrder() {
+        let sem = DispatchSemaphore.init(value: 0)
+        var components = URLComponents(string: Common.BaseURL + "food_buddy_api/api.php")!
+        components.queryItems = [
+            URLQueryItem(name: "action", value: "place_order"),
+            URLQueryItem(name: "menu_id", value: menu.id),
+            URLQueryItem(name: "portionSize", value: selectedPortionSize),
+            URLQueryItem(name: "preparation_instructions", value: textPreparationInstructions.text)
+        ]
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        let request = URLRequest(url: components.url!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            
+            defer { sem.signal() }
+            //print(response!)
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
+                
+                if (json.count == 3 && (json["status"] as! String) == "true")
+                {
+                    
                 }
             } catch {
                 print("error")

@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
-class RestaurantsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RestaurantsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tableRestaurants: UITableView!
     
     var restaurants: [RestaurantModel] = []
+    var restaurantsFiltered: [RestaurantModel] = []
     
     override func viewDidLoad() {
         // self.navigationItem.title = "Your Title"
@@ -21,7 +23,8 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         
         let cell = UINib(nibName: "RestaurantTableViewCell", bundle: nil)
         self.tableRestaurants.register(cell, forCellReuseIdentifier: "cell")
-        
+        self.searchBar.delegate = self
+
         populateRestaurants()
         /*
             var rest: Restaurant = Restaurant()
@@ -75,6 +78,7 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
                         
                         self.restaurants.append(restaurant)
                     }
+                    self.restaurantsFiltered.append(contentsOf: self.restaurants)
                     DispatchQueue.main.async {
                         self.tableRestaurants.dataSource = self;
                         self.tableRestaurants.delegate = self;
@@ -94,20 +98,20 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count;
+        return self.restaurantsFiltered.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableRestaurants.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RestaurantTableViewCell;
-        print(indexPath.row)
-        if (indexPath.row < 0 || indexPath.row >= self.restaurants.count) {
+        // print(indexPath.row)
+        if (indexPath.row < 0 || indexPath.row >= self.restaurantsFiltered.count) {
             return cell
         }
-        cell.labelName?.text = self.restaurants[indexPath.row].name;
-        cell.labelCuisine?.text = "Cuisine: \(self.restaurants[indexPath.row].cuisine)"
-        cell.labelLocation?.text = self.restaurants[indexPath.row].address;
-        var img = UIImage(named: self.restaurants[indexPath.row].image_filename)
+        cell.labelName?.text = self.restaurantsFiltered[indexPath.row].name;
+        cell.labelCuisine?.text = "Cuisine: \(self.restaurantsFiltered[indexPath.row].cuisine)"
+        cell.labelLocation?.text = self.restaurantsFiltered[indexPath.row].address;
+        var img = UIImage(named: self.restaurantsFiltered[indexPath.row].image_filename)
         if (img == nil) {
             cell.imagePicture.image = UIImage(named: "restaurant1")
         } else {
@@ -130,8 +134,20 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         print("selected cell \(indexPath.row)")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenu") as! MenuViewController
-        vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
+        vc.restaurant_id = "\(self.restaurantsFiltered[indexPath.row].id)"
+        tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.restaurantsFiltered = searchText.isEmpty ? self.restaurants : self.restaurants.filter {
+            $0.name.lowercased().contains(searchText.lowercased()) ||
+            $0.address.lowercased().contains(searchText.lowercased()) ||
+            $0.cuisine.lowercased().contains(searchText.lowercased())
+        }
+        print(searchText)
+        print(self.restaurantsFiltered.count)
+        self.tableRestaurants.reloadData()
+    }
 }
