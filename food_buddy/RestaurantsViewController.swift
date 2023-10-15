@@ -160,7 +160,14 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         print("selected cell \(indexPath.row)")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "vcRestaurantProfile") as! RestaurantProfileViewController
-        vc.restaurant_id = "\(self.restaurantsFiltered[indexPath.row].id)"
+        vc.restaurant.id = self.restaurantsFiltered[indexPath.row].id
+        vc.restaurant.name = self.restaurantsFiltered[indexPath.row].name
+        vc.restaurant.cuisine = self.restaurantsFiltered[indexPath.row].cuisine
+        vc.restaurant.contact = self.restaurantsFiltered[indexPath.row].contact
+        vc.restaurant.address = self.restaurantsFiltered[indexPath.row].address
+        vc.restaurant.city = self.restaurantsFiltered[indexPath.row].city
+        vc.restaurant.rating = self.restaurantsFiltered[indexPath.row].rating
+        vc.restaurant.image_filename = self.restaurantsFiltered[indexPath.row].image_filename
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
