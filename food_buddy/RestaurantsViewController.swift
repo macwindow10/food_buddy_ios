@@ -71,8 +71,10 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
                         let restaurant = RestaurantModel()
                         restaurant.id = item["id"] ?? "0"
                         restaurant.name = item["name"] ?? ""
+                        restaurant.rating = item["rating"] ?? ""
                         restaurant.address = item["address"] ?? ""
-                        restaurant.address = restaurant.address + ", " + item["city"]!
+                        restaurant.city = item["city"] ?? ""
+                        restaurant.contact = item["contact_number"]!
                         restaurant.cuisine = item["restaurant_type"] ?? ""
                         restaurant.image_filename = item["image_filename"] ?? ""
                         
@@ -111,7 +113,8 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         }
         cell.labelName?.text = self.restaurantsFiltered[indexPath.row].name;
         cell.labelCuisine?.text = "Cuisine: \(self.restaurantsFiltered[indexPath.row].cuisine)"
-        cell.labelLocation?.text = self.restaurantsFiltered[indexPath.row].address;
+        cell.labelLocation?.text = self.restaurantsFiltered[indexPath.row].address +
+        ", " + self.restaurantsFiltered[indexPath.row].city
         var img = UIImage(named: self.restaurantsFiltered[indexPath.row].image_filename)
         if (img == nil) {
             cell.imagePicture.image = UIImage(named: "restaurant1")
