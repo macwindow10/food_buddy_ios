@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RestaurantsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class RestaurantsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CustomCellDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tableRestaurants: UITableView!
@@ -104,6 +104,7 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableRestaurants.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RestaurantTableViewCell;
+        cell.configure(delegate: self)
         // print(indexPath.row)
         if (indexPath.row < 0 || indexPath.row >= self.restaurantsFiltered.count) {
             return cell
@@ -149,5 +150,17 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         print(searchText)
         print(self.restaurantsFiltered.count)
         self.tableRestaurants.reloadData()
+    }
+    
+    func cell(_ cell: RestaurantTableViewCell, didTap button: UIButton) {
+        
+        guard let indexPath = self.tableRestaurants.indexPath(for: cell)
+        else { return }
+        
+        print("selected cell \(indexPath.row)")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "vcRestaurantProfile") as! RestaurantProfileViewController
+        vc.restaurant_id = "\(self.restaurantsFiltered[indexPath.row].id)"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
