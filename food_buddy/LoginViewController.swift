@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         var components = URLComponents(string: Common.BaseURL + "food_buddy_api/api.php")!
         components.queryItems = [
             URLQueryItem(name: "action", value: "login"),
-            URLQueryItem(name: "username", value: textUsername.text!)
+            URLQueryItem(name: "username", value: textUsername.text!),
             URLQueryItem(name: "password", value: textPassword.text!)
         ]
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
@@ -47,23 +47,21 @@ class LoginViewController: UIViewController {
                 print(json)
                 if (json.count == 3 && (json["status"] as! String) == "true")
                 {
-                    let users = json["users"] as! NSArray
-                    for i in 0..<users.count {
-                        let item = users[i] as! Dictionary<String, String>
-                        let userId = item["id"] ?? ""
-                        let userUserName = item["username"] ?? ""
-                        let userName = item["name"] ?? ""
-                        let userAddress = item["address"] ?? ""
-                        let userMobile = item["mobile"] ?? ""
-                        let userType = item["user_type"] ?? ""
-                        let defaults = UserDefaults.standard
-                        defaults.set(userId, forKey: UserDefaultKeys.keyUserId)
-                        defaults.set(userUserName, forKey: UserDefaultKeys.keyUserName)
-                        defaults.set(userName, forKey: UserDefaultKeys.keyName)
-                        defaults.set(userAddress, forKey: UserDefaultKeys.keyAddress)
-                        defaults.set(userMobile, forKey: UserDefaultKeys.keyMobile)
-                        defaults.set(userType, forKey: UserDefaultKeys.keyType)
-                    }
+                    let item = json["users"] as! Dictionary<String, String>
+                    let userId = item["id"] ?? ""
+                    let userUserName = item["username"] ?? ""
+                    let userName = item["name"] ?? ""
+                    let userAddress = item["address"] ?? ""
+                    let userMobile = item["mobile"] ?? ""
+                    let userType = item["user_type"] ?? ""
+                    let defaults = UserDefaults.standard
+                    defaults.set(userId, forKey: UserDefaultKeys.keyUserId)
+                    defaults.set(userUserName, forKey: UserDefaultKeys.keyUserName)
+                    defaults.set(userName, forKey: UserDefaultKeys.keyName)
+                    defaults.set(userAddress, forKey: UserDefaultKeys.keyAddress)
+                    defaults.set(userMobile, forKey: UserDefaultKeys.keyMobile)
+                    defaults.set(userType, forKey: UserDefaultKeys.keyType)
+                    
 
                     DispatchQueue.main.async {
                         
@@ -78,6 +76,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func buttonClick_SignUp(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcSignUp") as! RestaurantsViewController
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 
