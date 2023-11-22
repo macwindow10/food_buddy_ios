@@ -63,8 +63,10 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
             selectedPortionSize = "Full"
+            labelPrice.text = "Rs. \(menu.price)"
         } else if row == 1 {
             selectedPortionSize = "Half"
+            labelPrice.text = "Rs. \(Int(menu.price)! / 2)"
         }
     }
     
