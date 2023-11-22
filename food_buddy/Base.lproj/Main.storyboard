@@ -63,6 +63,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="buttonClick_OrderFood:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cdI-t4-E0W"/>
+                                    <action selector="buttonClick_SignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fB2-LG-yno"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,7 +72,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="dwL-Ks-Zvh"/>
                     <connections>
-                        <outlet property="buttonOrderFood" destination="4K3-vE-mAk" id="bGV-6a-CeG"/>
+                        <outlet property="buttonLogin" destination="4K3-vE-mAk" id="bGV-6a-CeG"/>
+                        <outlet property="buttonSignUp" destination="9d9-K2-g0y" id="iCI-8U-fR7"/>
+                        <outlet property="textPassword" destination="Xbf-zK-WdQ" id="AvX-gg-kbe"/>
+                        <outlet property="textUsername" destination="Wej-ZQ-5gf" id="04U-S1-9XD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
