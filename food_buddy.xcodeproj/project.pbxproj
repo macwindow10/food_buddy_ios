@@ -97,6 +97,7 @@
 				045339672AD9C7A600DFEA40 /* MenuTableViewCell.swift */,
 				045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */,
 				045339652AD9C67700DFEA40 /* MenuViewController.swift */,
+				043C310C2B11300D00E79521 /* RegisterViewController.swift */,
 				046043F92AD5934900FB4DA2 /* RestaurantModel.swift */,
 				04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */,
 				046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */,
@@ -104,7 +105,6 @@
 				045339622AD9B71700DFEA40 /* RestaurantTableViewCell.xib */,
 				046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */,
 				0435F8352B0E8FA400058DEB /* UserDefaultKeys.swift */,
-				043C310C2B11300D00E79521 /* RegisterViewController.swift */,
 			);
 			path = food_buddy;
 			sourceTree = "<group>";

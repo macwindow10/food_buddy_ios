@@ -453,6 +453,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Signup"/>
+                                <connections>
+                                    <action selector="buttonClicked_SignUp:" destination="kuM-ty-UNp" eventType="touchUpInside" id="IQP-IW-mLt"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIh-9c-1iA">
                                 <rect key="frame" x="55" y="475" width="304" height="34"/>
@@ -464,6 +467,14 @@
                         <viewLayoutGuide key="safeArea" id="e34-Xh-rMc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="Qo2-qb-ojT" id="uWv-1W-HJF"/>
+                        <outlet property="textAddress" destination="QIh-9c-1iA" id="s0G-co-MqW"/>
+                        <outlet property="textMobile" destination="0B0-Oe-cMY" id="wlv-sR-GMz"/>
+                        <outlet property="textName" destination="Uv1-to-kfU" id="1Qs-BR-vID"/>
+                        <outlet property="textPassword" destination="xMx-5z-k4r" id="kqZ-yq-yC2"/>
+                        <outlet property="textUsername" destination="W7Y-Pa-PMT" id="7Fx-AB-Add"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJg-Jz-4Cz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,14 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var userTypeOptions: [String] = ["user", "restaurant_owner"]
     var selectedUserType = "user"
     
+    @IBOutlet var textUsername: UITextField!
+    @IBOutlet var textPassword: UITextField!
+    @IBOutlet var textName: UITextField!
+    @IBOutlet var textMobile: UITextField!
+    @IBOutlet var textAddress: UITextField!
+    @IBOutlet var pickerView: UIPickerView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,4 +47,43 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
+    @IBAction func buttonClicked_SignUp(_ sender: UIButton) {
+        if (textUsername.text! == "" || textPassword.text! == "" ||
+            textName.text! == "" || textMobile.text! == "") {
+            return
+        }
+        var components = URLComponents(string: Common.BaseURL + "food_buddy_api/api.php")!
+        components.queryItems = [
+            URLQueryItem(name: "action", value: "signup"),
+            URLQueryItem(name: "username", value: textUsername.text!),
+            URLQueryItem(name: "password", value: textPassword.text!),
+            URLQueryItem(name: "name", value: textName.text!),
+            URLQueryItem(name: "mobile", value: textMobile.text!),
+            URLQueryItem(name: "address", value: textAddress.text!),
+            URLQueryItem(name: "user_type", value: selectedUserType)
+        ]
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        let request = URLRequest(url: components.url!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            
+            //print(response!)
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
+                print(json)
+                if (json.count == 3 && (json["status"] as! String) == "true")
+                {
+                
+                    DispatchQueue.main.async {
+                        
+                    }
+                }
+                
+            } catch {
+                print("error")
+            }
+        });
+        task.resume();
+    }
 }
