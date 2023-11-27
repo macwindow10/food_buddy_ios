@@ -21,11 +21,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func buttonClick_OrderFood(_ sender: UIButton) {
-        /*
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newVißewController = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
-        self.navigationController?.pushViewController(newViewController, animated: true)
-         */
+        
         if (textUsername.text! == "" || textPassword.text! == "") {
             return
         }
@@ -63,6 +59,16 @@ class LoginViewController: UIViewController {
                     defaults.set(userType, forKey: UserDefaultKeys.keyType)
                     
 
+                    if (userType == "user") {
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
+                        self.navigationController?.pushViewController(newViewController, animated: true)
+                    } else {
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! RestaurantsViewController
+                        self.navigationController?.pushViewController(newViewController, animated: true)
+                    }
+                    
                     DispatchQueue.main.async {
                         
                     }

@@ -46,8 +46,8 @@
             filePath = "food_buddy/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "buttonClick_OrderFood(_:)"
             landmarkType = "7">
          </BreakpointContent>
