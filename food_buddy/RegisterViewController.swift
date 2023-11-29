@@ -23,8 +23,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerPortionSize.delegate = self
-        pickerPortionSize.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -52,24 +52,32 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             textName.text! == "" || textMobile.text! == "") {
             return
         }
-        var components = URLComponents(string: Common.BaseURL + "food_buddy_api/api.php")!
-        components.queryItems = [
-            URLQueryItem(name: "action", value: "signup"),
-            URLQueryItem(name: "username", value: textUsername.text!),
-            URLQueryItem(name: "password", value: textPassword.text!),
-            URLQueryItem(name: "name", value: textName.text!),
-            URLQueryItem(name: "mobile", value: textMobile.text!),
-            URLQueryItem(name: "address", value: textAddress.text!),
-            URLQueryItem(name: "user_type", value: selectedUserType)
+        
+        let Url = String(format: Common.BaseURL + "food_buddy_api/api.php")
+            guard let serviceUrl = URL(string: Url) else { return }
+        let parameterDictionary = [
+            "action": "signup",
+            "username": textUsername.text!,
+            "password": textPassword.text!,
+            "name": textName.text!,
+            "mobile": textMobile.text!,
+            "address": textAddress.text!,
+            "user_type": selectedUserType
         ]
-        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
-        let request = URLRequest(url: components.url!)
+        var request = URLRequest(url: serviceUrl)
+        request.httpMethod = "POST"
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else {
+                return
+            }
+        request.httpBody = httpBody
+            
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             
-            //print(response!)
+            print(response!)
             do {
-                
+                let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
                 print(json)
                 if (json.count == 3 && (json["status"] as! String) == "true")

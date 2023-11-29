@@ -39,16 +39,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "971F9929-AD66-4EF4-B1C6-7FC0F881A620"
+            uuid = "6EC5F075-70BF-4110-A21A-80F341C97356"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "food_buddy/LoginViewController.swift"
+            filePath = "food_buddy/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "buttonClick_OrderFood(_:)"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "buttonClicked_SignUp(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE1AC9F9-C172-4DDF-A992-468C1DE5EB59"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "food_buddy/RegisterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "buttonClicked_SignUp(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

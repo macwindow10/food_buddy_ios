@@ -59,18 +59,16 @@ class LoginViewController: UIViewController {
                     defaults.set(userType, forKey: UserDefaultKeys.keyType)
                     
 
-                    if (userType == "user") {
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
-                        self.navigationController?.pushViewController(newViewController, animated: true)
-                    } else {
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! RestaurantsViewController
-                        self.navigationController?.pushViewController(newViewController, animated: true)
-                    }
-                    
                     DispatchQueue.main.async {
-                        
+                        if (userType == "user") {
+                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
+                            self.navigationController?.pushViewController(newViewController, animated: true)
+                        } else {
+                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! RestaurantsViewController
+                            self.navigationController?.pushViewController(newViewController, animated: true)
+                        }
                     }
                 }
                 
@@ -83,7 +81,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func buttonClick_SignUp(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcSignUp") as! RestaurantsViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcSignUp") as! RegisterViewController
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
