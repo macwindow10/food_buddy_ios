@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
                             self.navigationController?.pushViewController(newViewController, animated: true)
                         } else {
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! RestaurantsViewController
+                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! AdminRestaurantsViewController
                             self.navigationController?.pushViewController(newViewController, animated: true)
                         }
                     }

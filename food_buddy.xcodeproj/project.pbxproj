@@ -27,6 +27,7 @@
 		04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */; };
 		04739ED62ADB0CEA00EE8560 /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */; };
 		04C4379A2ADBEDF0006EF4BD /* RestaurantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */; };
+		04FE01A22B18F81E007FF1F1 /* AdminRestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
 		04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantProfileViewController.swift; sourceTree = "<group>"; };
+		04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminRestaurantsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		046043E22AD57A6200FB4DA2 /* food_buddy */ = {
 			isa = PBXGroup;
 			children = (
+				04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */,
 				046043E32AD57A6200FB4DA2 /* AppDelegate.swift */,
 				046043EC2AD57A6300FB4DA2 /* Assets.xcassets */,
 				046043FB2AD5967600FB4DA2 /* Common.swift */,
@@ -185,6 +188,7 @@
 				046043E82AD57A6200FB4DA2 /* LoginViewController.swift in Sources */,
 				046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */,
 				04C4379A2ADBEDF0006EF4BD /* RestaurantProfileViewController.swift in Sources */,
+				04FE01A22B18F81E007FF1F1 /* AdminRestaurantsViewController.swift in Sources */,
 				04739ED62ADB0CEA00EE8560 /* IngredientModel.swift in Sources */,
 				0453396C2AD9C82900DFEA40 /* MenuModel.swift in Sources */,
 				046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */,
