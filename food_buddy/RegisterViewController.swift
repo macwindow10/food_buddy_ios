@@ -75,16 +75,19 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             
-            print(response!)
+            // print(response!)
             do {
-                let s = String(bytes: data!, encoding: .utf8)
+                // let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
                 print(json)
-                if (json.count == 3 && (json["status"] as! String) == "true")
+                if (json.count == 2 && (json["status"] as! String) == "true")
                 {
-                
                     DispatchQueue.main.async {
-                        
+                        let alert = UIAlertController(title: "Information", message: "User registered successfully", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                            self.navigationController?.popViewController(animated: true)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
                     }
                 }
                 
