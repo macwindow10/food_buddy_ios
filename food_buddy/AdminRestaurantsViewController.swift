@@ -108,14 +108,14 @@ class AdminRestaurantsViewController : UIViewController, UITableViewDelegate, UI
             tableView.deselectRow(at: indexPath, animated: true)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            
+            //
         }
     }
+    
     @IBAction func button_AddRestaurant(_ sender: UIButton) {
         if (userType == "user") {
-            let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenu") as! MenuViewController
-            vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
-            tableView.deselectRow(at: indexPath, animated: true)
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "vcAddRestaurant") as! AdminAddRestaurantViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
