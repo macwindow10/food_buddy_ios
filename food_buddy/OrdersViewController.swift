@@ -14,7 +14,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var orders: [OrderModel] = []
     var user_id: String = ""
-    var selectedOrderId: String = "1"
+    var selectedOrderId: String = "0"
     
     override func viewDidLoad() {
         user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
@@ -51,6 +51,9 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func buttonClicked_TrackOrder(_ sender: UIButton) {
+        if (selectedOrderId == "0") {
+            return
+        }
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "vcTrackOrder") as! TrackOrderViewController
         vc.orderId = selectedOrderId
