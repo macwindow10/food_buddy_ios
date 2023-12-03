@@ -50,7 +50,13 @@ class LoginViewController: UIViewController {
                     let userAddress = item["address"] ?? ""
                     let userMobile = item["mobile"] ?? ""
                     let userType = item["user_type"] ?? ""
+                    
+                    let cart: [OrderModel] = []
+                    let encoder = JSONEncoder()
+                    let cartEncoded = try encoder.encode(cart)
+                    
                     let defaults = UserDefaults.standard
+                    defaults.set(cartEncoded, forKey: UserDefaultKeys.keyCart)
                     defaults.set(userId, forKey: UserDefaultKeys.keyUserId)
                     defaults.set(userUserName, forKey: UserDefaultKeys.keyUserName)
                     defaults.set(userName, forKey: UserDefaultKeys.keyName)

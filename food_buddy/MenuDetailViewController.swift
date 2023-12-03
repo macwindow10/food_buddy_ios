@@ -17,15 +17,29 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet var labelPrice: UILabel!
     @IBOutlet var textPreparationInstructions: UITextView!
     @IBOutlet weak var pickerPortionSize: UIPickerView!
+    @IBOutlet var textAnyAllergy: UITextField!
+    @IBOutlet var textSpecialDietaryRequirement: UITextField!
     
     var portionSizeOptions: [String] = ["Full", "Half"]
     var menu: MenuModel = MenuModel()
     var ingredients: [IngredientModel] = []
     var selectedPortionSize = "Full"
+    var cart: [OrderModel] = []
+    var user_id: String = ""
     
     override func viewDidLoad() {
         
         populateIngredients()
+        
+        if let data = UserDefaults.standard.data(forKey: UserDefaultKeys.keyCart) {
+            do {
+                let decoder = JSONDecoder()
+                cart = try decoder.decode([OrderModel].self, from: data)
+            } catch {
+                print("Unable to Decode Cart (\(error))")
+            }
+        }
+        user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
         
         imageMenu.image = UIImage(named: menu.image_filename)
         imageMenu.contentMode = .scaleAspectFit
@@ -72,12 +86,27 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func buttonPlaceOrder_Click(_ sender: UIButton) {
         
-        placeOrder()
-        let alert = UIAlertController(title: "Information", message: "Order placed successfully", preferredStyle: .alert)
+        // placeOrder()
+        let order = OrderModel()
+        order.user_id = user_id
+        order.menu_id = menu.id
+        order.dt = Common.getCurrentDateTimeInString()
+        order.order_status = 1
+        order.preparation_instructions = textPreparationInstructions.text!
+        order.any_allergy = textAnyAllergy.text!
+        order.special_dietary_requirements = textSpecialDietaryRequirement.text!
+        cart.append(order)
+        do {
+            let encoder = JSONEncoder()
+            let cartEncoded = try encoder.encode(cart)
+            UserDefaults.standard.set(cartEncoded, forKey: UserDefaultKeys.keyCart)
+        } catch {
+            print("error")
+        }
+        
+        let alert = UIAlertController(title: "Information", message: "Added to your Cart", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-          
             self.navigationController?.popViewController(animated: true)
-            
         }))
         self.present(alert, animated: true, completion: nil)
     }

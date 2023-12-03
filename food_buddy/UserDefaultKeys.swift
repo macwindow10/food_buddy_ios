@@ -14,4 +14,5 @@ struct UserDefaultKeys {
     static let keyAddress = "UserAddress"
     static let keyMobile = "UserMobile"
     static let keyType = "UserType"
+    static let keyCart = "UserCart"
 }
