@@ -39,9 +39,9 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-              return 150
+              return 125
         }
-        return 150
+        return 125
     }
     
     func populateOrders() {
@@ -69,7 +69,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         order.id = item["id"] ?? "0"
                         order.menu_id = item["menu_id"] ?? ""
                         order.menu_name = item["menu_name"] ?? ""
-                        order.dt = item["dt"] ?? ""
+                        order.dt = item["date_time"] ?? ""
                         order.order_status = Int(item["order_status"] ?? "1") ?? 1
                         order.latitude = Float(item["latitude"] ?? "33.00") ?? 33.00
                         order.longitude = Float(item["longitude"] ?? "73.00") ?? 73.00

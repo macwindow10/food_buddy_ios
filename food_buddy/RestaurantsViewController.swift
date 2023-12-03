@@ -110,7 +110,7 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
     
     @objc func viewOrders() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrders") as! CartViewController
+        let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrders") as! OrdersViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
