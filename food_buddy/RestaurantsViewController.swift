@@ -20,7 +20,9 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         // self.navigationItem.title = "Your Title"
         // self.title = "Restaurants"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBack))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "View Cart", style: .plain, target: self, action: #selector(self.viewCart))
+        let barButtonViewCart = UIBarButtonItem(title: "View Cart", style: .plain, target: self, action: #selector(self.viewCart))
+        let barButtonOrders = UIBarButtonItem(title: "Orders", style: .plain, target: self, action: #selector(self.viewOrders))
+        self.navigationItem.rightBarButtonItems = [barButtonOrders, barButtonViewCart]
         
         let cell = UINib(nibName: "RestaurantTableViewCell", bundle: nil)
         self.tableRestaurants.register(cell, forCellReuseIdentifier: "cell")
@@ -104,6 +106,12 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "vcCart") as! CartViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func viewOrders() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrders") as! CartViewController
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

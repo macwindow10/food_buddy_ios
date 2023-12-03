@@ -34,8 +34,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
         
-        pickerPortionSize.delegate = self
-        pickerPortionSize.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +48,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (indexPath.row < 0 || indexPath.row >= self.cart.count) {
             return cell
         }
-        cell.textLabel?.text = "Food Item: \(self.cart[indexPath.row].menu_name). Date: \(self.cart[indexPath.row].dt). Preparation Instructions: \(self.cart[indexPath.row].preparation_instructions). Special Dietary Requirements: \(self.cart[indexPath.row].special_dietary_requirements). Any Allergy: \(self.cart[indexPath.row].any_allergy).";
+        cell.textLabel?.text = "Food Item: \(self.cart[indexPath.row].menu_name). Date: \(self.cart[indexPath.row].dt). Preparation Instructions: \(self.cart[indexPath.row].preparation_instructions). Special Dietary Requirements: \(self.cart[indexPath.row].special_dietary_requirements). Any Allergy: \(self.cart[indexPath.row].any_allergy). Price: \(self.cart[indexPath.row].price).";
         
         cell.textLabel?.numberOfLines = 0
         return cell;
@@ -123,7 +123,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             defer { sem.signal() }
             //print(response!)
             do {
-                
+                let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
                 
                 if (json.count == 3 && (json["status"] as! String) == "true")
