@@ -74,13 +74,13 @@ class AdminAddRestaurantViewController: UIViewController, UIPickerViewDelegate, 
             
             // print(response!)
             do {
-                // let s = String(bytes: data!, encoding: .utf8)
+                let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
                 print(json)
                 if (json.count == 2 && (json["status"] as! String) == "true")
                 {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Information", message: "User registered successfully", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Information", message: "Restaurant created successfully", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                             self.navigationController?.popViewController(animated: true)
                         }))

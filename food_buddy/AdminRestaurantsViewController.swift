@@ -12,7 +12,7 @@ class AdminRestaurantsViewController : UIViewController, UITableViewDelegate, UI
     
     @IBOutlet var tableRestaurants: UITableView!
     
-    var userType: String
+    var userType: String = "user"
     let defaults = UserDefaults.standard
     var restaurants: [RestaurantModel] = []
     
@@ -113,7 +113,7 @@ class AdminRestaurantsViewController : UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func button_AddRestaurant(_ sender: UIButton) {
-        if (userType == "user") {
+        if (userType == "restaurant_owner") {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "vcAddRestaurant") as! AdminAddRestaurantViewController
             self.navigationController?.pushViewController(vc, animated: true)
