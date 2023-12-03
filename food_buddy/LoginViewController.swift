@@ -77,9 +77,25 @@ class LoginViewController: UIViewController {
                         }
                     }
                 }
+                else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "Login failed", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                            self.navigationController?.popViewController(animated: true)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
                 
             } catch {
                 print("error")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "Login failed", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         });
         task.resume();

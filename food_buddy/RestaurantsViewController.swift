@@ -20,6 +20,7 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
         // self.navigationItem.title = "Your Title"
         // self.title = "Restaurants"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBack))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "View Cart", style: .plain, target: self, action: #selector(self.viewCart))
         
         let cell = UINib(nibName: "RestaurantTableViewCell", bundle: nil)
         self.tableRestaurants.register(cell, forCellReuseIdentifier: "cell")
@@ -97,6 +98,12 @@ class RestaurantsViewController : UIViewController, UITableViewDelegate, UITable
     
     @objc func onBack() {
         _ = navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func viewCart() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "vcCart") as! CartViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
