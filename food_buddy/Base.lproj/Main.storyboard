@@ -515,6 +515,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add New Restaurant"/>
+                                <connections>
+                                    <action selector="button_AddRestaurant:" destination="1sO-9g-qTF" eventType="touchUpInside" id="jaW-Oq-6de"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Buddy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKw-La-dhc">
                                 <rect key="frame" x="127" y="73" width="166" height="39"/>

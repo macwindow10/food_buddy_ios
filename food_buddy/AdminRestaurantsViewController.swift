@@ -102,9 +102,21 @@ class AdminRestaurantsViewController : UIViewController, UITableViewDelegate, UI
         
         print("selected cell \(indexPath.row)")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenu") as! MenuViewController
-        vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if (userType == "user") {
+            let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenu") as! MenuViewController
+            vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            
+        }
+    }
+    @IBAction func button_AddRestaurant(_ sender: UIButton) {
+        if (userType == "user") {
+            let vc = storyBoard.instantiateViewController(withIdentifier: "vcMenu") as! MenuViewController
+            vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
