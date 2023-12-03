@@ -17,4 +17,14 @@ class Common {
         let dateString = df.string(from: date)
         return dateString
     }
+    
+    public static func getOrderStatus(orderStatus: Int) -> String {
+        switch(orderStatus) {
+        case 1: return "Order Placed";
+        case 2: return "Preparing";
+        case 3: return "Out for Delivery";
+        case 4: return "Delivered";
+        default: return "Order Placed";
+        }
+    }
 }
