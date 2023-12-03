@@ -14,6 +14,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var orders: [OrderModel] = []
     var user_id: String = ""
+    var selectedOrderId: String = "1"
     
     override func viewDidLoad() {
         user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
@@ -42,6 +43,18 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
               return 125
         }
         return 125
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected row \(indexPath.row)")
+        selectedOrderId = self.orders[indexPath.row].id
+    }
+    
+    @IBAction func buttonClicked_TrackOrder(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "vcTrackOrder") as! TrackOrderViewController
+        vc.orderId = selectedOrderId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func populateOrders() {

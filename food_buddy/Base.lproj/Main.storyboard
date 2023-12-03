@@ -531,6 +531,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonClicked_TrackOrder:" destination="crL-ux-m5Y" eventType="touchUpInside" id="tRv-ln-T0f"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tWg-rr-q5t"/>
@@ -543,6 +546,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6L-7p-DHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6818.8405797101459" y="66.964285714285708"/>
+        </scene>
+        <!--Track Order View Controller-->
+        <scene sceneID="D92-yK-fkh">
+            <objects>
+                <viewController storyboardIdentifier="vcTrackOrder" id="zEs-tl-wbL" customClass="TrackOrderViewController" customModule="food_buddy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="APc-22-EfS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Track Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN3-8g-DGV">
+                                <rect key="frame" x="127" y="85" width="160" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0LB-mo-oTf">
+                                <rect key="frame" x="20" y="152" width="374" height="694"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ehT-sK-e5y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="0LB-mo-oTf" id="SEG-2E-E2L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IeQ-Ox-hdi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7582.6086956521749" y="66.964285714285708"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="rly-mF-B1Z">
