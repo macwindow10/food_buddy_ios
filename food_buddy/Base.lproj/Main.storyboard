@@ -469,11 +469,18 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonClicked_PlaceOrder:" destination="OjP-i7-ZAz" eventType="touchUpInside" id="f2w-Od-EUe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MaG-ah-i6G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="1kF-Nb-TvM" id="Q5U-mM-XI1"/>
+                        <outlet property="tableCart" destination="byi-EN-dSY" id="1tF-7K-Zx4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3I-AL-lH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

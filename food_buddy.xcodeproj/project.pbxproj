@@ -94,11 +94,11 @@
 		046043E22AD57A6200FB4DA2 /* food_buddy */ = {
 			isa = PBXGroup;
 			children = (
-				04C262A22B1C9E6000F8907C /* Model */,
 				049A893E2B1C533D00C169EF /* AdminAddRestaurantViewController.swift */,
 				04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */,
 				046043E32AD57A6200FB4DA2 /* AppDelegate.swift */,
 				046043EC2AD57A6300FB4DA2 /* Assets.xcassets */,
+				04C262A72B1CB1A800F8907C /* CartViewController.swift */,
 				046043FB2AD5967600FB4DA2 /* Common.swift */,
 				046043F12AD57A6300FB4DA2 /* Info.plist */,
 				046043EE2AD57A6300FB4DA2 /* LaunchScreen.storyboard */,
@@ -108,6 +108,7 @@
 				045339672AD9C7A600DFEA40 /* MenuTableViewCell.swift */,
 				045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */,
 				045339652AD9C67700DFEA40 /* MenuViewController.swift */,
+				04C262A22B1C9E6000F8907C /* Model */,
 				043C310C2B11300D00E79521 /* RegisterViewController.swift */,
 				04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */,
 				046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */,
@@ -115,7 +116,6 @@
 				045339622AD9B71700DFEA40 /* RestaurantTableViewCell.xib */,
 				046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */,
 				0435F8352B0E8FA400058DEB /* UserDefaultKeys.swift */,
-				04C262A72B1CB1A800F8907C /* CartViewController.swift */,
 			);
 			path = food_buddy;
 			sourceTree = "<group>";
