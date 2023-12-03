@@ -17,4 +17,6 @@ class OrderModel: Codable {
     var any_allergy: String = ""
     var portionSize: String = ""
     var price: Int = 0
+    var latitude: Float = 33.00
+    var longitude: Float = 73.00
 }

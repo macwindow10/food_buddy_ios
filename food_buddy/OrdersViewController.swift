@@ -57,6 +57,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             do {
                 self.orders = []
+                let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
                 print(json)
                 if (json.count == 3 && (json["status"] as! String) == "true")
@@ -70,6 +71,8 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         order.menu_name = item["menu_name"] ?? ""
                         order.dt = item["dt"] ?? ""
                         order.order_status = Int(item["order_status"] ?? "1") ?? 1
+                        order.latitude = Float(item["latitude"] ?? "33.00") ?? 33.00
+                        order.longitude = Float(item["longitude"] ?? "73.00") ?? 73.00
                         
                         self.orders.append(order)
                     }
