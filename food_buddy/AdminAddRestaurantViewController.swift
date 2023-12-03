@@ -15,12 +15,15 @@ class AdminAddRestaurantViewController: UIViewController, UIPickerViewDelegate, 
     @IBOutlet var textAddress: UITextField!
     @IBOutlet var textCity: UITextField!
     
+    var user_id = "1"
+    let defaults = UserDefaults.standard
     var restaurantTypeOptions: [String] = ["Continental", "Fast Food"]
     var selectedRestaurantType = "Continental"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
         pickerView.delegate = self
         pickerView.dataSource = self
     }
@@ -55,6 +58,7 @@ class AdminAddRestaurantViewController: UIViewController, UIPickerViewDelegate, 
             guard let serviceUrl = URL(string: Url) else { return }
         let parameterDictionary = [
             "action": "add_restaurant",
+            "user_id": user_id,
             "name": textRestaurantName.text!,
             "contact_number": textContactNo.text!,
             "address": textAddress.text!,
