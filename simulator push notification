@@ -1,0 +1,3 @@
+
+
+xcrun simctl push E0646E47-7F71-4658-A243-D8C3110B634E com.home.food-buddy first.apn

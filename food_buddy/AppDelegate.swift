@@ -24,13 +24,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func getNotificationSettings() {
       UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
+          print("Notification settings: \(settings)")
+          
+          guard settings.authorizationStatus == .authorized else { return }
+          DispatchQueue.main.async {
+            UIApplication.shared.registerForRemoteNotifications()
+          }
+
       }
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         registerForPushNotifications()
+        
+        // Check if launched from notification
+        let notificationOption = launchOptions?[.remoteNotification]
+
+        // 1
+        if
+          let notification = notificationOption as? [String: AnyObject],
+          let aps = notification["aps"] as? [String: AnyObject] {
+          
+        }
         return true
     }
 
@@ -48,6 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func application(_ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map {
+            data in String(format: "%02.2hhx", data)
+            
+        }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+
+    func application(_ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      print("Failed to register: \(error)")
+    }
 
 }
 
