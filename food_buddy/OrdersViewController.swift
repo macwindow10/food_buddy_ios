@@ -72,6 +72,11 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func buttonClicked_TrackOrder(_ sender: UIButton) {
         if (selectedOrderId == "0") {
+            let alert = UIAlertController(title: "Information", message: "Please select an order", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
