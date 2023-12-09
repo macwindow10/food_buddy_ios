@@ -28,6 +28,9 @@
 		046043FC2AD5967600FB4DA2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043FB2AD5967600FB4DA2 /* Common.swift */; };
 		04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */; };
 		04739ED62ADB0CEA00EE8560 /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */; };
+		0475FFB32B25066D00CDFEB9 /* StripePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */; };
+		0475FFC72B250ADD00CDFEB9 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 0475FFC62B250ADD00CDFEB9 /* Stripe */; };
+		0475FFC92B250ADD00CDFEB9 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 0475FFC82B250ADD00CDFEB9 /* StripePaymentSheet */; };
 		049A893F2B1C533D00C169EF /* AdminAddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A893E2B1C533D00C169EF /* AdminAddRestaurantViewController.swift */; };
 		04B886E22B1CE821009B2857 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B886E12B1CE821009B2857 /* OrdersViewController.swift */; };
 		04C262A42B1C9F1C00F8907C /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C262A32B1C9F1C00F8907C /* OrderModel.swift */; };
@@ -61,6 +64,7 @@
 		046043FB2AD5967600FB4DA2 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
+		0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentViewController.swift; sourceTree = "<group>"; };
 		049A893E2B1C533D00C169EF /* AdminAddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminAddRestaurantViewController.swift; sourceTree = "<group>"; };
 		04B886E12B1CE821009B2857 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		04C262A32B1C9F1C00F8907C /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				045D4B8D2B1CFACD00BBBBEA /* MapKit.framework in Frameworks */,
+				0475FFC92B250ADD00CDFEB9 /* StripePaymentSheet in Frameworks */,
+				0475FFC72B250ADD00CDFEB9 /* Stripe in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +140,7 @@
 				046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */,
 				045D4B8E2B1CFBA300BBBBEA /* TrackOrderViewController.swift */,
 				0435F8352B0E8FA400058DEB /* UserDefaultKeys.swift */,
+				0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */,
 			);
 			path = food_buddy;
 			sourceTree = "<group>";
@@ -166,6 +173,10 @@
 			dependencies = (
 			);
 			name = food_buddy;
+			packageProductDependencies = (
+				0475FFC62B250ADD00CDFEB9 /* Stripe */,
+				0475FFC82B250ADD00CDFEB9 /* StripePaymentSheet */,
+			);
 			productName = food_buddy;
 			productReference = 046043E02AD57A6200FB4DA2 /* food_buddy.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +205,9 @@
 				Base,
 			);
 			mainGroup = 046043D72AD57A6200FB4DA2;
+			packageReferences = (
+				0475FFC52B250ADD00CDFEB9 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
+			);
 			productRefGroup = 046043E12AD57A6200FB4DA2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -241,6 +255,7 @@
 				04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */,
 				046043FC2AD5967600FB4DA2 /* Common.swift in Sources */,
 				045339692AD9C7A600DFEA40 /* MenuTableViewCell.swift in Sources */,
+				0475FFB32B25066D00CDFEB9 /* StripePaymentViewController.swift in Sources */,
 				045339632AD9B71700DFEA40 /* RestaurantTableViewCell.swift in Sources */,
 				046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */,
 				0435F8362B0E8FA500058DEB /* UserDefaultKeys.swift in Sources */,
@@ -464,6 +479,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0475FFC52B250ADD00CDFEB9 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
+			requirement = {
+				kind = exactVersion;
+				version = 23.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0475FFC62B250ADD00CDFEB9 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0475FFC52B250ADD00CDFEB9 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = Stripe;
+		};
+		0475FFC82B250ADD00CDFEB9 /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0475FFC52B250ADD00CDFEB9 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 046043D82AD57A6200FB4DA2 /* Project object */;
 }

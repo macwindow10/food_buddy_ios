@@ -68,12 +68,12 @@ class LoginViewController: UIViewController {
                     DispatchQueue.main.async {
                         if (userType == "user") {
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
-                            self.navigationController?.pushViewController(newViewController, animated: true)
+                            let vc = storyBoard.instantiateViewController(withIdentifier: "vcRestaurants") as! RestaurantsViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! AdminRestaurantsViewController
-                            self.navigationController?.pushViewController(newViewController, animated: true)
+                            let vc = storyBoard.instantiateViewController(withIdentifier: "vcAdminPanel") as! AdminRestaurantsViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
                         }
                     }
                 }

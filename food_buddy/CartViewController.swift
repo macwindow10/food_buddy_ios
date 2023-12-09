@@ -12,17 +12,26 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet var tableCart: UITableView!
     @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var labelDeliveredToAddress: UILabel!
+    @IBOutlet var labelTotal: UILabel!
     
-    var paymentMethodOptions: [String] = ["Cash On Delivery", "PayPal", "Stripe"]
+    var paymentMethodOptions: [String] = ["Cash On Delivery", "Stripe"]
     var selectedPaymentMethod: String = "Cash On Delivery"
     var cart: [OrderModel] = []
     var user_id: String = ""
+    var total = 0.0
     
     override func viewDidLoad() {
         if let data = UserDefaults.standard.data(forKey: UserDefaultKeys.keyCart) {
             do {
                 let decoder = JSONDecoder()
                 cart = try decoder.decode([OrderModel].self, from: data)
+                
+                total = 0.0
+                for o in cart {
+                    total = total + Double(o.price)
+                }
+                labelTotal.text = "Total: \(total)"
                 
                 self.tableCart.dataSource = self;
                 self.tableCart.delegate = self;
@@ -93,11 +102,19 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("error")
         }
         
-        let alert = UIAlertController(title: "Information", message: "Order placed successfully", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
+        /*
+            let alert = UIAlertController(title: "Information", message: "Order placed successfully", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                // self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            */
+        
+        if selectedPaymentMethod == "Stripe" {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "vcStripePayment") as! StripePaymentViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func placeOrder(order: OrderModel) {
