@@ -2,6 +2,7 @@
   "aps": {
     "alert": "Your order is received and approved by Restaurant",
     "sound": "default",
-    "link_url": "https://raywenderlich.com"
+    "order_id": "1",
+    "order_status": "1"
   }
 }

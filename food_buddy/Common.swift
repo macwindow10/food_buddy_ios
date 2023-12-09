@@ -27,4 +27,12 @@ class Common {
         default: return "Order Placed";
         }
     }
+    
+    public static func isLoggedIn() -> Bool {
+        let user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId)
+        if user_id == nil {
+            return false
+        }
+        return true
+    }
 }

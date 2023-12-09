@@ -38,10 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerForPushNotifications()
         
-        // Check if launched from notification
         let notificationOption = launchOptions?[.remoteNotification]
-
-        // 1
         if
           let notification = notificationOption as? [String: AnyObject],
           let aps = notification["aps"] as? [String: AnyObject] {
@@ -50,8 +47,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+        completionHandler(.failed)
+            print("Error in Apple Push Notification")
+            return
+        }
+        let message = aps["alert"] as! String
+        let orderId = aps["order_id"]
+        let orderStatus = aps["order_status"]
+        if (Common.isLoggedIn()) {
+            
+            let alert = UIAlertController(title: "Information", message: "\(message). Please open orders screen", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                
+            }))
+            application.windows[0].rootViewController?.present(alert, animated: true, completion: nil)
+            
+            /*
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrders") as! OrdersViewController
+            
+            let nvc = application.windows[0].rootViewController as! UINavigationController
+            nvc.pushViewController(vc, animated: true)
+             */
+        }
+    }
+    
     // MARK: UISceneSession Lifecycle
-
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
