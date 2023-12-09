@@ -1,0 +1,8 @@
+{
+  "aps": {
+    "alert": "Your order is preparing. Estimated time is 45 minutes.",
+    "sound": "default",
+    "order_id": "1",
+    "order_status": "1"
+  }
+}

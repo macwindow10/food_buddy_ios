@@ -1,0 +1,8 @@
+{
+  "aps": {
+    "alert": "Your order is out for delivery",
+    "sound": "default",
+    "order_id": "1",
+    "order_status": "1"
+  }
+}
