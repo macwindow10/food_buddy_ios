@@ -108,7 +108,11 @@ class AdminRestaurantsViewController : UIViewController, UITableViewDelegate, UI
             tableView.deselectRow(at: indexPath, animated: true)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            //
+            let vc = storyBoard.instantiateViewController(withIdentifier: "vcAdminMenu") as! AdminAddMenuViewController
+            vc.restaurant_id = "\(self.restaurants[indexPath.row].id)"
+            vc.restaurant_name = "\(self.restaurants[indexPath.row].name)"
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

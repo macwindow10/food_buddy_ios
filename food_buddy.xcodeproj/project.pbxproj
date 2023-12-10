@@ -31,6 +31,7 @@
 		0475FFB32B25066D00CDFEB9 /* StripePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */; };
 		0475FFC72B250ADD00CDFEB9 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 0475FFC62B250ADD00CDFEB9 /* Stripe */; };
 		0475FFC92B250ADD00CDFEB9 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 0475FFC82B250ADD00CDFEB9 /* StripePaymentSheet */; };
+		04981FF12B2636B400FCF866 /* AdminAddMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981FF02B2636B400FCF866 /* AdminAddMenuViewController.swift */; };
 		049A893F2B1C533D00C169EF /* AdminAddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A893E2B1C533D00C169EF /* AdminAddRestaurantViewController.swift */; };
 		04B886E22B1CE821009B2857 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B886E12B1CE821009B2857 /* OrdersViewController.swift */; };
 		04C262A42B1C9F1C00F8907C /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C262A32B1C9F1C00F8907C /* OrderModel.swift */; };
@@ -65,6 +66,7 @@
 		04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
 		0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentViewController.swift; sourceTree = "<group>"; };
+		04981FF02B2636B400FCF866 /* AdminAddMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminAddMenuViewController.swift; sourceTree = "<group>"; };
 		049A893E2B1C533D00C169EF /* AdminAddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminAddRestaurantViewController.swift; sourceTree = "<group>"; };
 		04B886E12B1CE821009B2857 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		04C262A32B1C9F1C00F8907C /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		046043E22AD57A6200FB4DA2 /* food_buddy */ = {
 			isa = PBXGroup;
 			children = (
+				04981FF02B2636B400FCF866 /* AdminAddMenuViewController.swift */,
 				049A893E2B1C533D00C169EF /* AdminAddRestaurantViewController.swift */,
 				04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */,
 				046043E32AD57A6200FB4DA2 /* AppDelegate.swift */,
@@ -247,6 +250,7 @@
 				046043E42AD57A6200FB4DA2 /* AppDelegate.swift in Sources */,
 				043C310D2B11300D00E79521 /* RegisterViewController.swift in Sources */,
 				049A893F2B1C533D00C169EF /* AdminAddRestaurantViewController.swift in Sources */,
+				04981FF12B2636B400FCF866 /* AdminAddMenuViewController.swift in Sources */,
 				04C262A62B1CA45500F8907C /* CartModel.swift in Sources */,
 				04B886E22B1CE821009B2857 /* OrdersViewController.swift in Sources */,
 				046043E62AD57A6200FB4DA2 /* SceneDelegate.swift in Sources */,
