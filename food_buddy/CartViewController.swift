@@ -15,10 +15,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var labelDeliveredToAddress: UILabel!
     @IBOutlet var labelTotal: UILabel!
     
+    let defaults = UserDefaults.standard
     var paymentMethodOptions: [String] = ["Cash On Delivery", "Stripe"]
     var selectedPaymentMethod: String = "Cash On Delivery"
     var cart: [OrderModel] = []
     var user_id: String = ""
+    var user_mobile: String = ""
+    var user_address: String = ""
     var total = 0.0
     
     override func viewDidLoad() {
@@ -46,7 +49,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
+        user_mobile = UserDefaults.standard.string(forKey: UserDefaultKeys.keyMobile) ?? ""
+        user_address = UserDefaults.standard.string(forKey: UserDefaultKeys.keyAddress) ?? ""
         
+        labelDeliveredToAddress.text = "Mobile: \(user_mobile). Address: \(user_address)"
         pickerView.delegate = self
         pickerView.dataSource = self
     }
@@ -106,18 +112,17 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("error")
         }
         
-        /*
-            let alert = UIAlertController(title: "Information", message: "Order placed successfully", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                // self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-            */
-        
         if selectedPaymentMethod == "Stripe" {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "vcStripePayment") as! StripePaymentViewController
             self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Information", message: "Order placed successfully", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
