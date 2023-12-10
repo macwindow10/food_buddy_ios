@@ -26,6 +26,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             do {
                 let decoder = JSONDecoder()
                 cart = try decoder.decode([OrderModel].self, from: data)
+                if cart.count == 0 {
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
                 
                 total = 0.0
                 for o in cart {

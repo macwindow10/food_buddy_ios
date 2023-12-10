@@ -106,11 +106,20 @@ class StripePaymentViewController: UIViewController {
     func displayAlert(title: String, message: String? = nil) {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            //alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToViewController2(ofClass: RestaurantsViewController.self, animated: true)
             }))
             self.present(alertController, animated: true)
         }
     }
+}
+
+extension UINavigationController {
+
+  func popToViewController2(ofClass: AnyClass, animated: Bool = true) {
+    if let vc = viewControllers.filter({$0.isKind(of: ofClass)}).last {
+      popToViewController(vc, animated: animated)
+    }
+  }
 }

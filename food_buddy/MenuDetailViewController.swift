@@ -86,6 +86,16 @@ class MenuDetailViewController : UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func buttonPlaceOrder_Click(_ sender: UIButton) {
         
+        if (textPreparationInstructions.text! == "" || textAnyAllergy.text! == "" ||
+            textSpecialDietaryRequirement.text! == "") {
+            let alert = UIAlertController(title: "Error", message: "Fill missing information", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let order = OrderModel()
         order.user_id = user_id
         order.menu_id = menu.id
