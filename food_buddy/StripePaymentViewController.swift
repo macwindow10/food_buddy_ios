@@ -10,11 +10,9 @@ import StripePaymentSheet
 
 class StripePaymentViewController: UIViewController {
     
-    //private static let backendURL = URL(string: "http://127.0.0.1:4242")!
     private static let backendURL = URL(string: Common.BaseURL)!
-
+    private var paymentSheet: PaymentSheet?
     private var paymentIntentClientSecret: String?
-
     private lazy var payButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Pay now", for: .normal)
@@ -29,7 +27,8 @@ class StripePaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        StripeAPI.defaultPublishableKey = "pk_test_51OLKPfKCP8INzgGfuvWEZuWQqnhj4ozyUJdPj4nOogAf8XJ4kA621tKS160rb0ZUUoYSTc1hE0suJ7CvxhSInmYr000kxkWt14"
+        
+        StripeAPI.defaultPublishableKey = ""
 
         view.backgroundColor = .systemBackground
         view.addSubview(payButton)
@@ -44,40 +43,36 @@ class StripePaymentViewController: UIViewController {
     }
 
     func fetchPaymentIntent() {
-        let url = Self.backendURL.appendingPathComponent("/create-payment-intent")
-
-        let shoppingCartContent: [String: Any] = [
-            "items": [
-                ["id": "xl-shirt"]
-            ]
-        ]
+        let url = Self.backendURL.appendingPathComponent("/food_buddy_api/payments.php")
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONSerialization.data(withJSONObject: shoppingCartContent)
-
         let task = URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
-            guard
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 200,
-                let data = data,
+          guard let data = data,
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any],
-                let clientSecret = json["clientSecret"] as? String
-            else {
-                let message = error?.localizedDescription ?? "Failed to decode response from server."
-                self?.displayAlert(title: "Error loading page", message: message)
-                return
-            }
+                let customerId = json["customer"] as? String,
+                let customerEphemeralKeySecret = json["ephemeralKey"] as? String,
+                let paymentIntentClientSecret = json["paymentIntent"] as? String,
+                let publishableKey = json["publishableKey"] as? String,
+                let self = self else {
+            // Handle error
+            return
+          }
 
-            print("Created PaymentIntent")
-            self?.paymentIntentClientSecret = clientSecret
+          STPAPIClient.shared.publishableKey = publishableKey
+          // MARK: Create a PaymentSheet instance
+          var configuration = PaymentSheet.Configuration()
+          configuration.merchantDisplayName = "Example, Inc."
+          configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
+          // Set `allowsDelayedPaymentMethods` to true if your business handles
+          // delayed notification payment methods like US bank accounts.
+          configuration.allowsDelayedPaymentMethods = true
+          self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntentClientSecret, configuration: configuration)
 
-            DispatchQueue.main.async {
-                self?.payButton.isEnabled = true
-            }
+          DispatchQueue.main.async {
+            self.payButton.isEnabled = true
+          }
         })
-
         task.resume()
     }
 
