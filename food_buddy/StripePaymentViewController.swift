@@ -13,10 +13,12 @@ class StripePaymentViewController: UIViewController {
     private static let backendURL = URL(string: Common.BaseURL)!
     private var paymentSheet: PaymentSheet?
     private var paymentIntentClientSecret: String?
+    @IBOutlet var labelCompanyName: UILabel!
+    
     private lazy var payButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Pay now", for: .normal)
-        button.backgroundColor = .systemIndigo
+        button.backgroundColor = .systemGray
         button.layer.cornerRadius = 5
         button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         button.addTarget(self, action: #selector(pay), for: .touchUpInside)
@@ -28,8 +30,6 @@ class StripePaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        StripeAPI.defaultPublishableKey = ""
-
         view.backgroundColor = .systemBackground
         view.addSubview(payButton)
 
@@ -59,29 +59,24 @@ class StripePaymentViewController: UIViewController {
             return
           }
 
-          STPAPIClient.shared.publishableKey = publishableKey
-          // MARK: Create a PaymentSheet instance
-          var configuration = PaymentSheet.Configuration()
-          configuration.merchantDisplayName = "Example, Inc."
-          configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
-          // Set `allowsDelayedPaymentMethods` to true if your business handles
-          // delayed notification payment methods like US bank accounts.
-          configuration.allowsDelayedPaymentMethods = true
-          self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntentClientSecret, configuration: configuration)
+            STPAPIClient.shared.publishableKey = publishableKey
+            // MARK: Create a PaymentSheet instance
+            var configuration = PaymentSheet.Configuration()
+            configuration.merchantDisplayName = "Food Buddy Inc."
+            configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
+            // Set `allowsDelayedPaymentMethods` to true if your business handles
+            // delayed notification payment methods like US bank accounts.
+            configuration.allowsDelayedPaymentMethods = true
+            self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntentClientSecret, configuration: configuration)
+            self.paymentIntentClientSecret = paymentIntentClientSecret
 
-          DispatchQueue.main.async {
-            self.payButton.isEnabled = true
+            DispatchQueue.main.async {
+                self.labelCompanyName.text = configuration.merchantDisplayName
+                self.payButton.backgroundColor = .systemBlue
+                self.payButton.isEnabled = true
           }
         })
         task.resume()
-    }
-
-    func displayAlert(title: String, message: String? = nil) {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alertController, animated: true)
-        }
     }
 
     @objc
@@ -89,23 +84,33 @@ class StripePaymentViewController: UIViewController {
         guard let paymentIntentClientSecret = self.paymentIntentClientSecret else {
             return
         }
+        
+        //var configuration = PaymentSheet.Configuration()
+        //configuration.merchantDisplayName = "Food Buddy Inc."
+        // let paymentSheet = PaymentSheet(
+        //    paymentIntentClientSecret: paymentIntentClientSecret,
+        //    configuration: configuration)
 
-        var configuration = PaymentSheet.Configuration()
-        configuration.merchantDisplayName = "Example, Inc."
-
-        let paymentSheet = PaymentSheet(
-            paymentIntentClientSecret: paymentIntentClientSecret,
-            configuration: configuration)
-
-        paymentSheet.present(from: self) { [weak self] (paymentResult) in
+        paymentSheet?.present(from: self) { [weak self] (paymentResult) in
             switch paymentResult {
             case .completed:
-                self?.displayAlert(title: "Payment complete!")
+                self?.displayAlert(title: "Payment completed!")
             case .canceled:
                 print("Payment canceled!")
             case .failed(let error):
                 self?.displayAlert(title: "Payment failed", message: error.localizedDescription)
             }
+        }
+    }
+    
+    func displayAlert(title: String, message: String? = nil) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            //alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alertController, animated: true)
         }
     }
 }

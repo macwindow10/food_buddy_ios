@@ -138,9 +138,9 @@
 				045339612AD9B71700DFEA40 /* RestaurantTableViewCell.swift */,
 				045339622AD9B71700DFEA40 /* RestaurantTableViewCell.xib */,
 				046043E52AD57A6200FB4DA2 /* SceneDelegate.swift */,
+				0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */,
 				045D4B8E2B1CFBA300BBBBEA /* TrackOrderViewController.swift */,
 				0435F8352B0E8FA400058DEB /* UserDefaultKeys.swift */,
-				0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */,
 			);
 			path = food_buddy;
 			sourceTree = "<group>";
