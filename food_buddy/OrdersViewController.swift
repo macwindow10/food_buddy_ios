@@ -60,6 +60,8 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if (self.orders[indexPath.row].order_status == 2) {
             cell.backgroundColor = UIColor.yellow
         } else if (self.orders[indexPath.row].order_status == 3) {
+            cell.backgroundColor = .systemTeal
+        } else if (self.orders[indexPath.row].order_status == 4) {
             cell.backgroundColor = .green
         }
         
@@ -110,7 +112,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.orders = []
                 let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
-                print(json)
+                // print(json)
                 if (json.count == 3 && (json["status"] as! String) == "true")
                 {
                     let orders = json["orders"] as! NSArray
@@ -142,6 +144,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrderFeedback") as! OrderFeedbackViewController
+                            vc.menu_id = completedOrders[0].menu_id
                             vc.order_id = completedOrders[0].id
                             self.navigationController?.pushViewController(vc, animated: true)
                             

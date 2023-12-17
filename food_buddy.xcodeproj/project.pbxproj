@@ -154,11 +154,11 @@
 		04C262A22B1C9E6000F8907C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04C262A52B1CA45500F8907C /* CartModel.swift */,
 				04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */,
 				0453396B2AD9C82900DFEA40 /* MenuModel.swift */,
 				04C262A32B1C9F1C00F8907C /* OrderModel.swift */,
 				046043F92AD5934900FB4DA2 /* RestaurantModel.swift */,
-				04C262A52B1CA45500F8907C /* CartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

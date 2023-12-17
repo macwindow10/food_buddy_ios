@@ -14,6 +14,7 @@ class OrderFeedbackViewController: UIViewController {
     @IBOutlet var segmentDelivery: UISegmentedControl!
     @IBOutlet var segmentOverallExperience: UISegmentedControl!
     
+    var menu_id: String = "1"
     var order_id: String = "1"
     
     override func viewDidLoad() {
@@ -42,6 +43,7 @@ class OrderFeedbackViewController: UIViewController {
             guard let serviceUrl = URL(string: Url) else { return }
         let parameterDictionary = [
             "action": "order_feedback",
+            "menu_id": self.menu_id,
             "order_id": self.order_id,
             "feedback": textViewFeedback.text!,
             "restaurant_rating": getRating(option: "restaurant"),
@@ -59,7 +61,7 @@ class OrderFeedbackViewController: UIViewController {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             
-            print(response!)
+            // print(response!)
             do {
                 let s = String(bytes: data!, encoding: .utf8)
                 let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
@@ -67,7 +69,7 @@ class OrderFeedbackViewController: UIViewController {
                 if (json.count == 2 && (json["status"] as! String) == "true")
                 {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Information", message: "User registered successfully", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Information", message: "You feedback submitted successfully", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                             self.navigationController?.popViewController(animated: true)
                         }))
