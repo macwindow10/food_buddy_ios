@@ -5,12 +5,15 @@
 //  Created by Mac on 03/12/2023.
 //
 
+import Foundation
+
 class OrderModel: Codable {
     var id: String = ""
     var user_id: String = ""
     var menu_id: String = ""
     var menu_name: String = ""
     var dt: String = ""
+    var dtDate: Date = Date()
     var preparation_instructions: String = ""
     var order_status: Int = 0
     var special_dietary_requirements: String = ""

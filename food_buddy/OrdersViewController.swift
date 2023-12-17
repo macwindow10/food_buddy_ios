@@ -53,6 +53,14 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         cell.textLabel?.text = "Food Item: \(self.orders[indexPath.row].menu_name). Date: \(self.orders[indexPath.row].dt). Status: \(Common.getOrderStatus(orderStatus: self.orders[indexPath.row].order_status)).";
         
+        if (self.orders[indexPath.row].order_status == 1) {
+            
+        } else if (self.orders[indexPath.row].order_status == 2) {
+            cell.backgroundColor = UIColor.yellow
+        } else if (self.orders[indexPath.row].order_status == 3) {
+            cell.backgroundColor = .green
+        }
+        
         cell.textLabel?.numberOfLines = 0
         return cell;
     }
@@ -111,12 +119,14 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         order.menu_id = item["menu_id"] ?? ""
                         order.menu_name = item["menu_name"] ?? ""
                         order.dt = item["date_time"] ?? ""
+                        order.dtDate = Common.toDate(dateString: order.dt)
                         order.order_status = Int(item["order_status"] ?? "1") ?? 1
                         order.latitude = Float(item["latitude"] ?? "33.00") ?? 33.00
                         order.longitude = Float(item["longitude"] ?? "73.00") ?? 73.00
                         
                         self.orders.append(order)
                     }
+                    self.orders.sort(by: { $0.dtDate.compare($1.dtDate) == .orderedAscending })
                     DispatchQueue.main.async {
                         self.tableOrders.dataSource = self;
                         self.tableOrders.delegate = self;

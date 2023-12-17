@@ -18,6 +18,13 @@ class Common {
         return dateString
     }
     
+    public static func toDate(dateString dateString: String) -> Date {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        let date = df.date(from: dateString)
+        return date!
+    }
+    
     public static func getOrderStatus(orderStatus: Int) -> String {
         switch(orderStatus) {
         case 1: return "Order Placed";
