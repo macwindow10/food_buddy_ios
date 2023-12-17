@@ -142,6 +142,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrderFeedback") as! OrderFeedbackViewController
+                            vc.order_id = completedOrders[0].id
                             self.navigationController?.pushViewController(vc, animated: true)
                             
                         }
