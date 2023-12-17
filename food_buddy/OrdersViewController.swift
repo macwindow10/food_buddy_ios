@@ -11,16 +11,20 @@ import UIKit
 class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableOrders: UITableView!
+    @IBOutlet var buttonToggleOrders: UIButton!
     
     var orders: [OrderModel] = []
     var user_id: String = ""
     var selectedOrderId: String = "0"
     var isFeedbackDialogPresented = 0;
+    var showCompletedOrders: Bool = false
     
     override func viewDidLoad() {
         user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
         Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(populateOrders), userInfo: nil, repeats: true)
         populateOrders()
+        
+        buttonToggleOrders.titleLabel?.text = "Show Completed Orders"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,6 +84,17 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row \(indexPath.row)")
         selectedOrderId = self.orders[indexPath.row].id
+    }
+    
+    @IBAction func buttonClicked_ToggleOrders(_ sender: UIButton) {
+        
+        if (showCompletedOrders) {
+            showCompletedOrders = false
+            buttonToggleOrders.titleLabel?.text = "Show Completed Orders"
+        } else {
+            showCompletedOrders = true
+            buttonToggleOrders.titleLabel?.text = "Hide Completed Orders"
+        }
     }
     
     @IBAction func buttonClicked_TrackOrder(_ sender: UIButton) {
