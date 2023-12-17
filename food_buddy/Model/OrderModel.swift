@@ -22,4 +22,5 @@ class OrderModel: Codable {
     var price: Int = 0
     var latitude: Float = 33.00
     var longitude: Float = 73.00
+    var is_feedback_given: Int = 0
 }

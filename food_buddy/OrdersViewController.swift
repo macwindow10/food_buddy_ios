@@ -15,9 +15,11 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var orders: [OrderModel] = []
     var user_id: String = ""
     var selectedOrderId: String = "0"
+    var isFeedbackDialogPresented = 0;
     
     override func viewDidLoad() {
         user_id = UserDefaults.standard.string(forKey: UserDefaultKeys.keyUserId) ?? "1"
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(populateOrders), userInfo: nil, repeats: true)
         populateOrders()
     }
     
@@ -54,7 +56,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.textLabel?.text = "Food Item: \(self.orders[indexPath.row].menu_name). Date: \(self.orders[indexPath.row].dt). Status: \(Common.getOrderStatus(orderStatus: self.orders[indexPath.row].order_status)).";
         
         if (self.orders[indexPath.row].order_status == 1) {
-            
+            cell.backgroundColor = .clear
         } else if (self.orders[indexPath.row].order_status == 2) {
             cell.backgroundColor = UIColor.yellow
         } else if (self.orders[indexPath.row].order_status == 3) {
@@ -68,9 +70,9 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-              return 125
+              return 100
         }
-        return 125
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -93,7 +95,7 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func populateOrders() {
+    @objc func populateOrders() {
         var components = URLComponents(string: Common.BaseURL + "food_buddy_api/api.php")!
         components.queryItems = [
             URLQueryItem(name: "action", value: "get_orders"),
@@ -123,14 +125,26 @@ class OrdersViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         order.order_status = Int(item["order_status"] ?? "1") ?? 1
                         order.latitude = Float(item["latitude"] ?? "33.00") ?? 33.00
                         order.longitude = Float(item["longitude"] ?? "73.00") ?? 73.00
+                        order.is_feedback_given = Int(item["is_feedback_given"] ?? "0") ?? 0
                         
                         self.orders.append(order)
                     }
                     self.orders.sort(by: { $0.dtDate.compare($1.dtDate) == .orderedAscending })
+                    
                     DispatchQueue.main.async {
                         self.tableOrders.dataSource = self;
                         self.tableOrders.delegate = self;
                         self.tableOrders.reloadData()
+                        
+                        let completedOrders = self.orders.filter({$0.order_status == 4 && $0.is_feedback_given == 0})
+                        if (completedOrders.count > 0 && self.isFeedbackDialogPresented == 0) {
+                            self.isFeedbackDialogPresented = 1
+                            
+                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyBoard.instantiateViewController(withIdentifier: "vcOrderFeedback") as! OrderFeedbackViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
+                            
+                        }
                     }
                 }
                 

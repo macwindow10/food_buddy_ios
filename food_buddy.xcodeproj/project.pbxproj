@@ -38,6 +38,7 @@
 		04C262A62B1CA45500F8907C /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C262A52B1CA45500F8907C /* CartModel.swift */; };
 		04C262A82B1CB1A800F8907C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C262A72B1CB1A800F8907C /* CartViewController.swift */; };
 		04C4379A2ADBEDF0006EF4BD /* RestaurantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */; };
+		04DBAB482B2EA7C5007EEC96 /* OrderFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBAB472B2EA7C5007EEC96 /* OrderFeedbackViewController.swift */; };
 		04FE01A22B18F81E007FF1F1 /* AdminRestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		04C262A52B1CA45500F8907C /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		04C262A72B1CB1A800F8907C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantProfileViewController.swift; sourceTree = "<group>"; };
+		04DBAB472B2EA7C5007EEC96 /* OrderFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFeedbackViewController.swift; sourceTree = "<group>"; };
 		04FE01A12B18F81E007FF1F1 /* AdminRestaurantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminRestaurantsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				045339682AD9C7A600DFEA40 /* MenuTableViewCell.xib */,
 				045339652AD9C67700DFEA40 /* MenuViewController.swift */,
 				04C262A22B1C9E6000F8907C /* Model */,
+				04DBAB472B2EA7C5007EEC96 /* OrderFeedbackViewController.swift */,
 				04B886E12B1CE821009B2857 /* OrdersViewController.swift */,
 				043C310C2B11300D00E79521 /* RegisterViewController.swift */,
 				04C437992ADBEDF0006EF4BD /* RestaurantProfileViewController.swift */,
@@ -257,6 +260,7 @@
 				04C262A42B1C9F1C00F8907C /* OrderModel.swift in Sources */,
 				04C262A82B1CB1A800F8907C /* CartViewController.swift in Sources */,
 				04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */,
+				04DBAB482B2EA7C5007EEC96 /* OrderFeedbackViewController.swift in Sources */,
 				046043FC2AD5967600FB4DA2 /* Common.swift in Sources */,
 				045339692AD9C7A600DFEA40 /* MenuTableViewCell.swift in Sources */,
 				0475FFB32B25066D00CDFEB9 /* StripePaymentViewController.swift in Sources */,
