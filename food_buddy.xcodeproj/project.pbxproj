@@ -26,6 +26,7 @@
 		046043F82AD580A600FB4DA2 /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */; };
 		046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043F92AD5934900FB4DA2 /* RestaurantModel.swift */; };
 		046043FC2AD5967600FB4DA2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046043FB2AD5967600FB4DA2 /* Common.swift */; };
+		0464CC182B40292F0069DE9B /* RestaurantReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464CC172B40292F0069DE9B /* RestaurantReviewModel.swift */; };
 		04739ED42ADB05FD00EE8560 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */; };
 		04739ED62ADB0CEA00EE8560 /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */; };
 		0475FFB32B25066D00CDFEB9 /* StripePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */; };
@@ -64,6 +65,7 @@
 		046043F72AD580A600FB4DA2 /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
 		046043F92AD5934900FB4DA2 /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		046043FB2AD5967600FB4DA2 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		0464CC172B40292F0069DE9B /* RestaurantReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReviewModel.swift; sourceTree = "<group>"; };
 		04739ED32ADB05FD00EE8560 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		04739ED52ADB0CEA00EE8560 /* IngredientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
 		0475FFB22B25066D00CDFEB9 /* StripePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				0453396B2AD9C82900DFEA40 /* MenuModel.swift */,
 				04C262A32B1C9F1C00F8907C /* OrderModel.swift */,
 				046043F92AD5934900FB4DA2 /* RestaurantModel.swift */,
+				0464CC172B40292F0069DE9B /* RestaurantReviewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				04DBAB482B2EA7C5007EEC96 /* OrderFeedbackViewController.swift in Sources */,
 				046043FC2AD5967600FB4DA2 /* Common.swift in Sources */,
 				045339692AD9C7A600DFEA40 /* MenuTableViewCell.swift in Sources */,
+				0464CC182B40292F0069DE9B /* RestaurantReviewModel.swift in Sources */,
 				0475FFB32B25066D00CDFEB9 /* StripePaymentViewController.swift in Sources */,
 				045339632AD9B71700DFEA40 /* RestaurantTableViewCell.swift in Sources */,
 				046043FA2AD5934900FB4DA2 /* RestaurantModel.swift in Sources */,
