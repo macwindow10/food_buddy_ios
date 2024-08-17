@@ -2,4 +2,6 @@
 
 iOS/iPhone mobile application for online food delivery.
 
-![Food Buddy Home] (https://github.com/macwindow10/food_buddy_ios/blob/master/food_buddy_scaled_01.PNG "Food Buddy Home")
+![Food Buddy Home] (https://github.com/macwindow10/food_buddy_ios/blob/master/food_buddy_scaled_01.PNG)
+
+<img src="https://github.com/macwindow10/food_buddy_ios/blob/master/food_buddy_scaled_01.PNG" width="128"/>
